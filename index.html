@@ -64,6 +64,8 @@
     @media (max-width: 600px) {
         table, thead, tbody, th, td, tr {
             display: block;
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
         thead {
@@ -89,80 +91,116 @@
 
 <h1>People Database</h1>
 
-<input type="text" id="name" placeholder="Enter Name">
-<input type="number" id="age" placeholder="Enter Age">
-<button onclick="addPerson()">Add Person</button>
+<input type="text" id="studentName" placeholder="Student Name">
+<input type="text" id="fatherName" placeholder="Father Name">
+<input type="text" id="rollNo" placeholder="Roll No">
+<input type="text" id="certificate" placeholder="Certificate / Program">
+<input type="text" id="board" placeholder="Board">
+<input type="text" id="group" placeholder="Group">
+<input type="text" id="passingYear" placeholder="Passing Year - Session">
+<input type="text" id="marks" placeholder="Marks">
+<input type="text" id="applicationId" placeholder="Application ID">
+
+<button onclick="addStudent()">Add Student</button>
+
 
 <table>
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Delete</th>
+            <th>Student Name</th>
+            <th>Father Name</th>
+            <th>Roll No</th>
+            <th>Certificate</th>
+            <th>Board</th>
+            <th>Group</th>
+            <th>passing Year-Session</th>
+            <th>Marks</th>
+            <th>Application ID.</th>
         </tr>
     </thead>
     <tbody id="tableBody"></tbody>
 </table>
 
 <script>
-    let people = JSON.parse(localStorage.getItem("people")) || [];
+    let students = JSON.parse(localStorage.getItem("selectedstudent")) || [];
 
-    function saveData() {
-        localStorage.setItem("people", JSON.stringify(people));
-    }
+function saveData() {
+    localStorage.setItem("students", JSON.stringify(students));
+}
 
-    function displayPeople() {
-        let tableBody = document.getElementById("tableBody");
-        tableBody.innerHTML = "";
+function displayStudents() {
+    let tableBody = document.getElementById("tableBody");
+    tableBody.innerHTML = "";
 
-        people.forEach((person, index) => {
-            tableBody.innerHTML += `
-                <tr>
-                    <td>
-                        <span class="view-link" onclick="viewPerson(${index})">
-                            ${person.name}
-                        </span>
-                    </td>
-                    <td>${person.age}</td>
-                    <td>
-                        <button class="delete-btn" onclick="deletePerson(${index})">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-            `;
-        });
-    }
+    students.forEach((student, index) => {
+        tableBody.innerHTML += `
+            <tr>
+                <td>
+                    <span class="view-link" onclick="viewStudent(${index})">
+                        ${student.studentName}
+                    </span>
+                </td>
+                <td>${student.fatherName}</td>
+                <td>${student.rollNo}</td>
+                <td>${student.certificate}</td>
+                <td>${student.board}</td>
+                <td>${student.group}</td>
+                <td>${student.passingYear}</td>
+                <td>${student.marks}</td>
+                <td>${student.applicationId}</td>
+                <td>
+                    <button class="delete-btn" onclick="deleteStudent(${index})">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+}
 
-    function addPerson() {
-        let name = document.getElementById("name").value;
-        let age = document.getElementById("age").value;
 
-        if(name === "" || age === "") {
-            alert("Fill all fields");
+
+function addStudent() {
+    let student = {
+        studentName: document.getElementById("studentName").value,
+        fatherName: document.getElementById("fatherName").value,
+        rollNo: document.getElementById("rollNo").value,
+        certificate: document.getElementById("certificate").value,
+        board: document.getElementById("board").value,
+        group: document.getElementById("group").value,
+        passingYear: document.getElementById("passingYear").value,
+        marks: document.getElementById("marks").value,
+        applicationId: document.getElementById("applicationId").value
+    };
+
+    for (let key in student) {
+        if (student[key] === "") {
+            alert("Please fill all fields");
             return;
         }
-
-        people.push({ name, age });
-        saveData();
-        displayPeople();
-
-        document.getElementById("name").value = "";
-        document.getElementById("age").value = "";
     }
 
-    function deletePerson(index) {
-        people.splice(index, 1);
-        saveData();
-        displayPeople();
-    }
+    students.push(student);
+    saveData();
+    displayStudents();
 
-    function viewPerson(index) {
-    localStorage.setItem("selectedPerson", index);
+    document.querySelectorAll("input").forEach(input => input.value = "");
+}
+
+function deleteStudent(index) {
+    students.splice(index, 1);
+    saveData();
+    displayStudents();
+}
+
+function viewStudent(index) {
+    localStorage.setItem("selectedStudent", JSON.stringify(students[index]));
     window.open("details.html", "_blank");
 }
 
-    displayPeople();
+
+displayStudents();
+
 </script>
 
 </body>
