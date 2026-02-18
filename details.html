@@ -1,90 +1,191 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Books Portal</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBCC Digital Verification</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <style>
-        body {
-            font-family: Arial;
-            padding: 0;
-            background: #f4f4f4;
-            margin: 0;
-        }
+        h1:first-of-type {
+    margin-top: 0; /* removes top margin for logo H1 */
+}
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 20px;
-        }
+        body, html {
+    padding: 0;
+    background: #F7F7F7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #212529;
+}
 
-        .logo {
-            width: 200px;
-            max-width: 100%;
-            display: block;
-            margin: 0 auto 15px auto;
-        }
+h1 {
+    margin: 0;         /* remove heading margins */
+    padding: 0;        /* remove heading padding */
+    text-align: center;
+    font-weight: light;
+    line-height: 1.2;
+    margin-top: 8px;
+    margin-bottom: .5rem;
+}
 
-        h1 {
-            margin-bottom: 30px;
-        }
+h2 {
+    text-align: center;
+    font-weight: light;
+    font-size: 2rem;
+    line-height: 1.2;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            border-radius: 8px;
-            text-align: left;
-        }
+h2.subheading {
+    color: green;
+    margin-bottom: 24px;
+    padding: 0;
+}
 
-        p {
-            font-size: 16px;
-            margin: 10px 0;
-            word-break: break-word;
-        }
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0;        /* remove any table margin */
+    padding: 0;       /* remove any table padding */
+}
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 50px;
-            }
+th, td {
+    text-align: left;
+    padding: 8px;     /* optional: you can reduce it to 4px if you want it tighter */
+}
 
-            .card {
-                padding: 15px;
-            }
+td {
+    font-weight: bold;
+}
 
-            p {
-                font-size: 14px;
+
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
+
+
+        /* Optional responsive spacing */
+        @media (max-width: 768px) {
+            .col-lg-6 {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div id="print_page">
+    <!-- Logo -->
+    <h1>
+        <a href="https://ibcc.edu.pk/" title="Inter Boards Coordination Commission - IBCC">
+            <img src="logo.jpg" alt="IBCC Logo" width="200" height="200" class="logo">
+        </a>
+    </h1>
 
-    <!-- LOGO -->
-    <img src="logo.jpg" alt="Logo" class="logo">
+    <!-- Main Heading -->
+    <h1>Welcome to IBCC Portal for Digital Verification</h1>
 
-    <!-- HEADING -->
-    <h1>Welcome to Books Portal for Digital Verification</h1>
+    <!-- Student Name as Subheading -->
+    <h2 class="subheading" id="certificateLine"></h2>
 
-    <!-- DETAILS CARD -->
-    <div class="card">
-        <h2>Person Details</h2>
-        <p><strong>Name:</strong> <span id="name"></span></p>
-        <p><strong>Age:</strong> <span id="age"></span></p>
+    <!-- Table -->
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <table>
+                <tbody>
+                    <tr>
+                        <td width="20%"></td>
+                        <td>Student Name</td>
+                        <td id="studentName"><b></b></td>
+                        <td width="20%"></td>
+                    </tr>
+                    <tr>
+                        <td width="20%"></td>
+                        <td>Father Name</td>
+                        <td id="fatherName"><b></b></td>
+                        <td width="20%"></td>
+                    </tr>
+                    <tr>
+                        <td width="20%"></td>
+                        <td>Roll No</td>
+                        <td id="rollNo"><b></b></td>
+                        <td width="20%"></td>
+                    </tr>
+                    <tr>
+                        <td width="20%"></td>
+                        <td>Certificate/Program</td>
+                        <td id="certificate"><b></b></td>
+                        <td width="20%"></td>
+                    </tr>
+                    <tr>
+                        <td width="20%"></td>
+                        <td>Board</td>
+                        <td id="board"><b></b></td>
+                        <td width="20%"></td>
+                    </tr>
+                    <tr>
+                        <td width="20%"></td>
+                        <td>Group</td>
+                        <td id="group"><b></b></td>
+                        <td width="20%"></td>
+                    </tr>
+                    <tr>
+                        <td width="20%"></td>
+                        <td>Passing Year - Session</td>
+                        <td id="passingYear"><b></b></td>
+                        <td width="20%"></td>
+                    </tr>
+                    <tr>
+                        <td width="20%"></td>
+                        <td>Marks</td>
+                        <td id="marks"><b></b></td>
+                        <td width="20%"></td>
+                    </tr>
+                    <tr>
+                        <td width="20%"></td>
+                        <td>Application ID.</td>
+                        <td id="applicationId"><b></b></td>
+                        <td width="20%"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-3"></div>
     </div>
 
+    <!-- Footer Note -->
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <p style="text-align:left;margin-top:17px;font-weight: 400;">
+            Note - Please compare the certificate data from the above mention data stored in IBCC database, provide your email address and get the verification reply from info@ibcc.edu.pk.
+            </p>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+
+    <p style="text-align:center;color:green;font-weight:bolder;">
+        For More Information, You can visit IBCC Office, IBCC Website or Contact IBCC UAN Number 051- 111 114 222
+    </p>
 </div>
 
+<!-- Script to dynamically populate data -->
 <script>
-    let people = JSON.parse(localStorage.getItem("people")) || [];
-    let selectedIndex = localStorage.getItem("selectedPerson");
-
-    if(selectedIndex !== null && people[selectedIndex]) {
-        document.getElementById("name").innerText = people[selectedIndex].name;
-        document.getElementById("age").innerText = people[selectedIndex].age;
+    let student = JSON.parse(localStorage.getItem("selectedStudent"));
+    if(student){
+        document.getElementById("certificateLine").innerText =
+    `This Certificate is attested by IBCC to ${student.studentName}.`;
+        document.getElementById("studentName").innerText = student.studentName;
+        document.getElementById("fatherName").innerText = student.fatherName;
+        document.getElementById("rollNo").innerText = student.rollNo;
+        document.getElementById("certificate").innerText = student.certificate;
+        document.getElementById("board").innerText = student.board;
+        document.getElementById("group").innerText = student.group;
+        document.getElementById("passingYear").innerText = student.passingYear;
+        document.getElementById("marks").innerText = student.marks;
+        document.getElementById("applicationId").innerText = student.applicationId;
     }
 </script>
 
