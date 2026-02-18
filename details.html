@@ -25,7 +25,6 @@
     <h2>Person Details</h2>
     <p><strong>Name:</strong> <span id="name"></span></p>
     <p><strong>Age:</strong> <span id="age"></span></p>
-    <button onclick="goBack()">Back</button>
 </div>
 
 <script>
@@ -35,10 +34,6 @@
     if(selectedIndex !== null && people[selectedIndex]) {
         document.getElementById("name").innerText = people[selectedIndex].name;
         document.getElementById("age").innerText = people[selectedIndex].age;
-    }
-
-    function goBack() {
-        window.location.href = "index.html";
     }
 </script>
 
