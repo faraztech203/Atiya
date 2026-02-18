@@ -3,54 +3,19 @@
 <head>
     <title>People Database</title>
     <style>
-        body {
-            font-family: Arial;
-            padding: 20px;
-            background: #f4f4f4;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        input {
-            padding: 8px;
-            margin: 5px;
-        }
-
-        button {
-            padding: 8px 12px;
-            cursor: pointer;
-        }
-
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-            background: white;
-        }
-
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: center;
-        }
-
-        th {
-            background: #333;
-            color: white;
-        }
-
-        .delete-btn {
-            background: red;
-            color: white;
-            border: none;
-        }
+        body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+        input { padding: 8px; margin: 5px; }
+        button { padding: 8px 12px; cursor: pointer; }
+        table { width: 100%; margin-top: 20px; border-collapse: collapse; background: white; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
+        th { background: #333; color: white; }
+        .delete-btn { background: red; color: white; border: none; }
+        .view-link { color: blue; cursor: pointer; text-decoration: underline; }
     </style>
 </head>
 <body>
 
-<h1>People Database System</h1>
+<h1>People Database</h1>
 
 <input type="text" id="name" placeholder="Enter Name">
 <input type="number" id="age" placeholder="Enter Age">
@@ -61,7 +26,7 @@
         <tr>
             <th>Name</th>
             <th>Age</th>
-            <th>Action</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody id="tableBody"></tbody>
@@ -81,7 +46,11 @@
         people.forEach((person, index) => {
             tableBody.innerHTML += `
                 <tr>
-                    <td>${person.name}</td>
+                    <td>
+                        <span class="view-link" onclick="viewPerson(${index})">
+                            ${person.name}
+                        </span>
+                    </td>
                     <td>${person.age}</td>
                     <td>
                         <button class="delete-btn" onclick="deletePerson(${index})">
@@ -98,7 +67,7 @@
         let age = document.getElementById("age").value;
 
         if(name === "" || age === "") {
-            alert("Please fill all fields");
+            alert("Fill all fields");
             return;
         }
 
@@ -114,6 +83,11 @@
         people.splice(index, 1);
         saveData();
         displayPeople();
+    }
+
+    function viewPerson(index) {
+        localStorage.setItem("selectedPerson", index);
+        window.location.href = "details.html";
     }
 
     displayPeople();
