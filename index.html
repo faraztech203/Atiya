@@ -2,15 +2,87 @@
 <html>
 <head>
     <title>People Database</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: Arial; padding: 20px; background: #f4f4f4; }
-        input { padding: 8px; margin: 5px; }
-        button { padding: 8px 12px; cursor: pointer; }
-        table { width: 100%; margin-top: 20px; border-collapse: collapse; background: white; }
-        th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
-        th { background: #333; color: white; }
-        .delete-btn { background: red; color: white; border: none; }
-        .view-link { color: blue; cursor: pointer; text-decoration: underline; }
+    body {
+        font-family: Arial;
+        padding: 15px;
+        background: #f4f4f4;
+        margin: 0;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    input, button {
+        padding: 10px;
+        margin: 5px 0;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        background: white;
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+        word-break: break-word;
+    }
+
+    th {
+        background: #333;
+        color: white;
+    }
+
+    .delete-btn {
+        background: red;
+        color: white;
+        border: none;
+        padding: 6px 10px;
+    }
+
+    .view-link {
+        color: blue;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    /* Small screen adjustments */
+    @media (max-width: 600px) {
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+
+        thead {
+            display: none;
+        }
+
+        tr {
+            margin-bottom: 15px;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        td {
+            text-align: left;
+            padding: 8px;
+            border: none;
+        }
+    }
     </style>
 </head>
 <body>
