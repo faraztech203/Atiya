@@ -86,9 +86,9 @@
     }
 
     function viewPerson(index) {
-        localStorage.setItem("selectedPerson", index);
-        window.location.href = "details.html";
-    }
+    localStorage.setItem("selectedPerson", index);
+    window.open("details.html", "_blank");
+}
 
     displayPeople();
 </script>
