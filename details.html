@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person Details</title>
+    <style>
+        body { font-family: Arial; padding: 40px; background: #f4f4f4; }
+        .card {
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2 { text-align: center; }
+        button {
+            margin-top: 20px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Person Details</h2>
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Age:</strong> <span id="age"></span></p>
+    <button onclick="goBack()">Back</button>
+</div>
+
+<script>
+    let people = JSON.parse(localStorage.getItem("people")) || [];
+    let selectedIndex = localStorage.getItem("selectedPerson");
+
+    if(selectedIndex !== null && people[selectedIndex]) {
+        document.getElementById("name").innerText = people[selectedIndex].name;
+        document.getElementById("age").innerText = people[selectedIndex].age;
+    }
+
+    function goBack() {
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>
